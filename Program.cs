@@ -13,6 +13,7 @@ namespace adventuregame
             // Setting up entrance room
             entrance.leftRoomObject = player.availableObjects[0];
             entrance.rightRoomObject = player.availableObjects[5];
+            entrance.forwardViewRoomObject = entrance.roomFeatures[3];
             room currentRoom = entrance;
 
             // Ask player name
@@ -30,6 +31,8 @@ namespace adventuregame
             {
                 player.look(currentRoom);
             }
+
+
             // Introduce player to inventory
             Console.WriteLine($"Items you pick up are stored in your inventory. View it by writing 'inv'");
             playerInput = Console.ReadLine();
@@ -38,8 +41,9 @@ namespace adventuregame
             {
                 player.look(currentRoom);
             }
-            if (player.playerInputResult.Equals("inv")){
-                Console.WriteLine($"Inventory");
+            if (player.playerInputResult.Equals("inv"))
+            {
+                player.displayInventory();
             }
 
             // Loop while alive
