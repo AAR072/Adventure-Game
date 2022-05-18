@@ -20,6 +20,11 @@ namespace adventuregame
             "left", "right", "forward", "back", "up", "down"
 
         };
+        public static string[] availableObjects = {
+            //0       1       2        3     4       5
+            "key", "note", "knife", "rope", "rock", "flashlight"
+
+        };
         // Function to ask the player's name
         public static void askPlayerName()
         {
