@@ -16,12 +16,28 @@ namespace adventuregame
         public string downRoomObject = "";
         public string forwardRoomObject = "";
         public string backRoomObject = "";
+
+        // Visible objects in room
+        public string leftViewRoomObject = "";
+        public string rightViewRoomObject = "";
+        public string upViewRoomObject = "";
+        public string downViewRoomObject = "";
+        public string forwardViewRoomObject = "";
+        public string backViewRoomObject = "";
+
+
         public string roomType { get; set; }
         public string[] roomTypes = {
             //0           1          2           3       4       5
             "entrance", "corridor", "library", "jail", "pit", "ending"
 
         };
+        public string[] roomFeatures = {
+              //0           1         2        3             4       5
+            "bookshelf", "chasm", "spikes", "lockeddoor", "door", "water"
+
+        };
+
 
         public room(string tempRoomType)
         {
