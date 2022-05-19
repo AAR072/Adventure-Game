@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+To do:
+Doorways for changing rooms
+Consuming items
+*/
+using System;
 namespace adventuregame
 {
     internal class Program
