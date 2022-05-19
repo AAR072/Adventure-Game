@@ -46,6 +46,27 @@ namespace adventuregame
                 player.displayInventory();
             }
 
+            //Introduce player to using items
+            Console.WriteLine($"Items in your inventory can be used on different things. You can say 'use' and you will be promted with an item and something to use it on. Try that now.");
+            playerInput = Console.ReadLine();
+            player.playerInputResult = player.getPlayerInput(playerInput);
+            if (player.playerInputResult.Equals("look"))
+                {
+                    // Look using current room 
+                    player.look(currentRoom);
+                }
+                // If player wants to view inventory
+                if (player.playerInputResult.Equals("inv")){
+                    player.displayInventory();
+                }
+                // If player wants to use item
+                if (player.playerInputResult.Equals("use")){
+                    player.useItem(currentRoom);
+
+                }
+
+
+
             // Loop while alive
             while (player.gameState.Equals("alive"))
             {
@@ -55,8 +76,17 @@ namespace adventuregame
                 // If player wants to look
                 if (player.playerInputResult.Equals("look"))
                 {
-                    // Look left using current room 
-                    player.look(entrance);
+                    // Look using current room 
+                    player.look(currentRoom);
+                }
+                // If player wants to view inventory
+                if (player.playerInputResult.Equals("inv")){
+                    player.displayInventory();
+                }
+                // If player wants to use item
+                if (player.playerInputResult.Equals("use")){
+                    player.useItem(currentRoom);
+
                 }
             }
             Console.WriteLine("Press any key to close...");
