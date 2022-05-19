@@ -12,6 +12,7 @@ namespace adventuregame
 
         public static string playerInputResult;
         public static string gameState = "alive";
+
         // Array of all available actions
         public static string[] playerActions = {
             //0      1      2
@@ -56,7 +57,8 @@ namespace adventuregame
                     {
                         return "inv";
                     }
-                    if (Iinput == 2){
+                    if (Iinput == 2)
+                    {
                         return "use";
                     }
                 }
@@ -89,8 +91,6 @@ namespace adventuregame
             }
             return false;
         }
-
-
 
         // Function to add object to inventory
         public static void addObject(string objectToAdd)
@@ -317,9 +317,9 @@ namespace adventuregame
                     }
 
                 }
-            if (!lookRoomFeature.upViewRoomObject.Equals("") && direction.Equals("up"))
-            {
-                if (IlookRoomFeature == 0 && lookRoomFeature.upViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
+                if (!lookRoomFeature.upViewRoomObject.Equals("") && direction.Equals("up"))
+                {
+                    if (IlookRoomFeature == 0 && lookRoomFeature.upViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
                     {
                         Console.WriteLine("You see a bookshelf");
                         break;
@@ -349,10 +349,10 @@ namespace adventuregame
                         Console.WriteLine("You see a dirty small pool of water");
                         break;
                     }
-            }
-            if (!lookRoomFeature.downViewRoomObject.Equals("") && direction.Equals("down"))
-            {
-                if (IlookRoomFeature == 0 && lookRoomFeature.downViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
+                }
+                if (!lookRoomFeature.downViewRoomObject.Equals("") && direction.Equals("down"))
+                {
+                    if (IlookRoomFeature == 0 && lookRoomFeature.downViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
                     {
                         Console.WriteLine("You see a bookshelf");
                         break;
@@ -382,20 +382,19 @@ namespace adventuregame
                         Console.WriteLine("You see a dirty small pool of water");
                         break;
                     }
-            }
+                }
             }
 
         }
 
         // Function to check if room contains feature
 
-        public static bool isValidFeature(room featureRoom){
+        public static bool isValidFeature(room featureRoom)
+        {
 
 
             return false;
         }
-
-
         // Function to check where to look
         public static void look(room lookRoomObject)
         {
@@ -494,49 +493,106 @@ namespace adventuregame
                 Console.WriteLine("That is not a valid look direction");
             }
         }
-    
 
-
-
-        public static void useItem(room lookRoomFeature){
+        // Function to use item
+        public static void useItem(room lookRoomFeature)
+        {
             string useItemObject;
             string exitInput;
             Console.WriteLine("What item do you want to use?");
             useItemObject = Console.ReadLine();
             // If the input is null
-            if (String.IsNullOrEmpty(useItemObject)){
+            if (String.IsNullOrEmpty(useItemObject))
+            {
                 Console.WriteLine("That is not a valid object. Write 'exit' to cancel or write press enter to use another item.");
                 exitInput = Console.ReadLine();
                 if (exitInput.Equals("exit"))
                 {
                     return;
                 }
-                else{
+                else
+                {
                     player.useItem(lookRoomFeature);
                 }
             }
 
             // Check if input is a valid object
-            if (isInventory(useItemObject)){
-                
-
-
-
+            if (isInventory(useItemObject))
+            {
+                // Check if feature exists in room
+                if (useItemObject.Equals("key"))
+                {
+                    bool lockedDoorInRoom = false;
+                    if (lookRoomFeature.leftViewRoomObject.Equals("lockeddoor"))
+                    {
+                        // Need to consume key and create doorway
+                        Console.WriteLine("Opening locked door.");
+                        lockedDoorInRoom = true;
+                    }
+                    if (lookRoomFeature.rightViewRoomObject.Equals("lockeddoor"))
+                    {
+                        // Need to consume key and create doorway
+                        Console.WriteLine("Opening locked door.");
+                        lockedDoorInRoom = true;
+                    }
+                    if (lookRoomFeature.forwardViewRoomObject.Equals("lockeddoor"))
+                    {
+                        // Need to consume key and create doorway
+                        Console.WriteLine("Opening locked door.");
+                        lockedDoorInRoom = true;
+                    }
+                    if (lookRoomFeature.backViewRoomObject.Equals("lockeddoor"))
+                    {
+                        // Need to consume key and create doorway
+                        Console.WriteLine("Opening locked door.");
+                        lockedDoorInRoom = true;
+                    }
+                    if (lookRoomFeature.upViewRoomObject.Equals("lockeddoor"))
+                    {
+                        // Need to consume key and create doorway
+                        Console.WriteLine("Opening locked door.");
+                        lockedDoorInRoom = true;
+                    }
+                    if (lookRoomFeature.downViewRoomObject.Equals("lockeddoor"))
+                    {
+                        // Need to consume key and create doorway
+                        Console.WriteLine("Opening locked door.");
+                        lockedDoorInRoom = true;
+                    }
+                    if(!lockedDoorInRoom)
+                    {
+                        Console.WriteLine("There is no locked door in the room. Write 'exit' to cancel or write press enter to use another item.");
+                        exitInput = Console.ReadLine();
+                        if (exitInput.Equals("exit"))
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            player.useItem(lookRoomFeature);
+                        }
+                    }
+                }
+                if (useItemObject.Equals("knife")){
+                    bool vinesInRoom = false;
+                }
             }
-            else{
-                Console.WriteLine("That is not a valid object. Write 'exit' to cancel or write press enter to use another item.");
+            else
+            {
+                Console.WriteLine("That is not a valid object or it isn't in your inventory. Write 'exit' to cancel or write press enter to use another item.");
                 exitInput = Console.ReadLine();
                 if (exitInput.Equals("exit"))
                 {
                     return;
                 }
-                else{
+                else
+                {
                     player.useItem(lookRoomFeature);
                 }
 
             }
-            
-            
+
+
         }
     }
 }
