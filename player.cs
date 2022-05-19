@@ -14,8 +14,8 @@ namespace adventuregame
         public static string gameState = "alive";
         // Array of all available actions
         public static string[] playerActions = {
-            //0      1
-            "look", "inv"
+            //0      1      2
+            "look", "inv", "use"
             };
         public static string[] lookDirections = {
             //0     1          2        3       4       5
@@ -56,6 +56,9 @@ namespace adventuregame
                     {
                         return "inv";
                     }
+                    if (Iinput == 2){
+                        return "use";
+                    }
                 }
             }
             return "";
@@ -73,6 +76,21 @@ namespace adventuregame
             }
             return false;
         }
+
+        // Function to check if item is in inventory
+        public static bool isInventory(string item)
+        {
+            for (int IroomObject = 0; IroomObject < player.availableObjects.Length; IroomObject++)
+            {
+                if (item.Equals(player.inventory[IroomObject]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
 
         // Function to add object to inventory
         public static void addObject(string objectToAdd)
@@ -369,6 +387,15 @@ namespace adventuregame
 
         }
 
+        // Function to check if room contains feature
+
+        public static bool isValidFeature(room featureRoom){
+
+
+            return false;
+        }
+
+
         // Function to check where to look
         public static void look(room lookRoomObject)
         {
@@ -466,6 +493,50 @@ namespace adventuregame
             {
                 Console.WriteLine("That is not a valid look direction");
             }
+        }
+    
+
+
+
+        public static void useItem(room lookRoomFeature){
+            string useItemObject;
+            string exitInput;
+            Console.WriteLine("What item do you want to use?");
+            useItemObject = Console.ReadLine();
+            // If the input is null
+            if (String.IsNullOrEmpty(useItemObject)){
+                Console.WriteLine("That is not a valid object. Write 'exit' to cancel or write press enter to use another item.");
+                exitInput = Console.ReadLine();
+                if (exitInput.Equals("exit"))
+                {
+                    return;
+                }
+                else{
+                    player.useItem(lookRoomFeature);
+                }
+            }
+
+            // Check if input is a valid object
+            if (isInventory(useItemObject)){
+                
+
+
+
+            }
+            else{
+                Console.WriteLine("That is not a valid object. Write 'exit' to cancel or write press enter to use another item.");
+                exitInput = Console.ReadLine();
+                if (exitInput.Equals("exit"))
+                {
+                    return;
+                }
+                else{
+                    player.useItem(lookRoomFeature);
+                }
+
+            }
+            
+            
         }
     }
 }
