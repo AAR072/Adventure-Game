@@ -213,6 +213,10 @@ namespace adventuregame
                         Console.WriteLine("You see a dirty small pool of water");
                         break;
                     }
+                    if( IlookRoomFeature == 6 && lookRoomFeature.leftViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature])){
+                        Console.WriteLine("You see a doorway");
+                        break;
+                    }
                 }
                 // If there is a room feature on the right side of the room
                 if (!lookRoomFeature.rightViewRoomObject.Equals("") && direction.Equals("right"))
@@ -245,6 +249,10 @@ namespace adventuregame
                     if (IlookRoomFeature == 5 && lookRoomFeature.rightViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
                     {
                         Console.WriteLine("You see a dirty small pool of water");
+                        break;
+                    }
+                    if( IlookRoomFeature == 6 && lookRoomFeature.rightViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature])){
+                        Console.WriteLine("You see a doorway");
                         break;
                     }
                 }
@@ -281,6 +289,10 @@ namespace adventuregame
                         Console.WriteLine("You see a dirty small pool of water");
                         break;
                     }
+                    if( IlookRoomFeature == 6 && lookRoomFeature.forwardViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature])){
+                        Console.WriteLine("You see a doorway");
+                        break;
+                    }
                 }
                 // If there is a room feature in the back of the room
                 if (!lookRoomFeature.backViewRoomObject.Equals("") && direction.Equals("back"))
@@ -313,6 +325,10 @@ namespace adventuregame
                     if (IlookRoomFeature == 5 && lookRoomFeature.backViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
                     {
                         Console.WriteLine("You see a dirty small pool of water");
+                        break;
+                    }
+                    if( IlookRoomFeature == 6 && lookRoomFeature.backViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature])){
+                        Console.WriteLine("You see a doorway");
                         break;
                     }
 
@@ -349,6 +365,10 @@ namespace adventuregame
                         Console.WriteLine("You see a dirty small pool of water");
                         break;
                     }
+                    if( IlookRoomFeature == 6 && lookRoomFeature.upViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature])){
+                        Console.WriteLine("You see a doorway");
+                        break;
+                    }
                 }
                 if (!lookRoomFeature.downViewRoomObject.Equals("") && direction.Equals("down"))
                 {
@@ -380,6 +400,10 @@ namespace adventuregame
                     if (IlookRoomFeature == 5 && lookRoomFeature.downViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
                     {
                         Console.WriteLine("You see a dirty small pool of water");
+                        break;
+                    }
+                    if( IlookRoomFeature == 6 && lookRoomFeature.downViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature])){
+                        Console.WriteLine("You see a doorway");
                         break;
                     }
                 }
@@ -494,6 +518,10 @@ namespace adventuregame
             }
         }
 
+
+
+
+
         // Function to use item
         public static void useItem(room lookRoomFeature)
         {
@@ -573,9 +601,7 @@ namespace adventuregame
                         }
                     }
                 }
-                if (useItemObject.Equals("knife")){
-                    bool vinesInRoom = false;
-                }
+                
             }
             else
             {

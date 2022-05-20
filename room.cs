@@ -34,7 +34,7 @@ namespace adventuregame
         };
         public string[] roomFeatures = {
               //0           1         2        3             4       5       6
-            "bookshelf", "chasm", "spikes", "lockeddoor", "door", "water", "vines"
+            "bookshelf", "chasm", "spikes", "lockeddoor", "door", "water", "doorway",
 
         };
 
