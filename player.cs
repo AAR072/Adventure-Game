@@ -8,6 +8,7 @@ namespace adventuregame
 {
     internal class player
     {
+        public int globalInventoryNumber;
         public static string playerName;
 
         public static string playerInputResult;
@@ -80,12 +81,13 @@ namespace adventuregame
         }
 
         // Function to check if item is in inventory
-        public static bool isInventory(string item)
+        public bool isInventory(string item)
         {
-            for (int IroomObject = 0; IroomObject < player.availableObjects.Length; IroomObject++)
+            for (int k = 0; k < player.availableObjects.Length; k++)
             {
-                if (item.Equals(player.inventory[IroomObject]))
+                if (item.Equals(player.inventory[k]))
                 {
+                    this.globalInventoryNumber = k;
                     return true;
                 }
             }
@@ -415,6 +417,7 @@ namespace adventuregame
                         {
                             Console.WriteLine($"You pick up a {lookRoomObject.leftRoomObject}");
                             addObject(lookRoomObject.leftRoomObject);
+                            lookRoomObject.leftRoomObject = "";
                         }
                         else
                         {
@@ -428,6 +431,7 @@ namespace adventuregame
                         {
                             Console.WriteLine($"You pick up a {lookRoomObject.rightRoomObject}");
                             addObject(lookRoomObject.rightRoomObject);
+                            lookRoomObject.rightRoomObject = "";
                         }
                         else
                         {
@@ -441,6 +445,7 @@ namespace adventuregame
                         {
                             Console.WriteLine($"You pick up a {lookRoomObject.upRoomObject}");
                             addObject(lookRoomObject.upRoomObject);
+                            lookRoomObject.upRoomObject = "";
                         }
                         else
                         {
@@ -454,6 +459,7 @@ namespace adventuregame
                         {
                             Console.WriteLine($"You pick up a {lookRoomObject.downRoomObject}");
                             addObject(lookRoomObject.downRoomObject);
+                            lookRoomObject.downRoomObject = "";
                         }
                         else
                         {
@@ -467,6 +473,7 @@ namespace adventuregame
                         {
                             Console.WriteLine($"You pick up a {lookRoomObject.forwardRoomObject}");
                             addObject(lookRoomObject.forwardRoomObject);
+                            lookRoomObject.forwardRoomObject = "";
                         }
                         else
                         {
@@ -480,6 +487,7 @@ namespace adventuregame
                         {
                             Console.WriteLine($"You pick up a {lookRoomObject.backRoomObject}");
                             addObject(lookRoomObject.backRoomObject);
+                            lookRoomObject.backRoomObject = "";
                         }
                         else
                         {
@@ -494,8 +502,13 @@ namespace adventuregame
             }
         }
 
+        // Function to delete an object from the inventory
+        public void deleteItem(){
+            player.inventory[globalInventoryNumber] = "n";
+
+        }
         // Function to use item
-        public static void useItem(room lookRoomFeature)
+        public void useItem(room lookRoomFeature)
         {
             string useItemObject;
             string exitInput;
@@ -509,10 +522,6 @@ namespace adventuregame
                 if (exitInput.Equals("exit"))
                 {
                     return;
-                }
-                else
-                {
-                    player.useItem(lookRoomFeature);
                 }
             }
 
@@ -528,36 +537,42 @@ namespace adventuregame
                         // Need to consume key and create doorway
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        deleteItem();
                     }
                     if (lookRoomFeature.rightViewRoomObject.Equals("lockeddoor"))
                     {
                         // Need to consume key and create doorway
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        deleteItem();
                     }
                     if (lookRoomFeature.forwardViewRoomObject.Equals("lockeddoor"))
                     {
                         // Need to consume key and create doorway
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        deleteItem();
                     }
                     if (lookRoomFeature.backViewRoomObject.Equals("lockeddoor"))
                     {
                         // Need to consume key and create doorway
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        deleteItem();
                     }
                     if (lookRoomFeature.upViewRoomObject.Equals("lockeddoor"))
                     {
                         // Need to consume key and create doorway
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        deleteItem();
                     }
                     if (lookRoomFeature.downViewRoomObject.Equals("lockeddoor"))
                     {
                         // Need to consume key and create doorway
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        deleteItem();
                     }
                     if(!lockedDoorInRoom)
                     {
@@ -569,7 +584,7 @@ namespace adventuregame
                         }
                         else
                         {
-                            player.useItem(lookRoomFeature);
+                            this.useItem(lookRoomFeature);
                         }
                     }
                 }
@@ -587,7 +602,7 @@ namespace adventuregame
                 }
                 else
                 {
-                    player.useItem(lookRoomFeature);
+                    this.useItem(lookRoomFeature);
                 }
 
             }
