@@ -215,6 +215,11 @@ namespace adventuregame
                         Console.WriteLine("You see a dirty small pool of water");
                         break;
                     }
+                    if (IlookRoomFeature == 6 && lookRoomFeature.leftViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
+                    {
+                        Console.WriteLine("You see a doorway to walk through");
+                        break;
+                    }
                 }
                 // If there is a room feature on the right side of the room
                 if (!lookRoomFeature.rightViewRoomObject.Equals("") && direction.Equals("right"))
@@ -247,6 +252,11 @@ namespace adventuregame
                     if (IlookRoomFeature == 5 && lookRoomFeature.rightViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
                     {
                         Console.WriteLine("You see a dirty small pool of water");
+                        break;
+                    }
+                    if (IlookRoomFeature == 6 && lookRoomFeature.rightViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
+                    {
+                        Console.WriteLine("You see a doorway to walk through");
                         break;
                     }
                 }
@@ -283,6 +293,11 @@ namespace adventuregame
                         Console.WriteLine("You see a dirty small pool of water");
                         break;
                     }
+                    if (IlookRoomFeature == 6 && lookRoomFeature.forwardViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
+                    {
+                        Console.WriteLine("You see a doorway to walk through");
+                        break;
+                    }
                 }
                 // If there is a room feature in the back of the room
                 if (!lookRoomFeature.backViewRoomObject.Equals("") && direction.Equals("back"))
@@ -315,6 +330,11 @@ namespace adventuregame
                     if (IlookRoomFeature == 5 && lookRoomFeature.backViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
                     {
                         Console.WriteLine("You see a dirty small pool of water");
+                        break;
+                    }
+                    if (IlookRoomFeature == 6 && lookRoomFeature.backViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
+                    {
+                        Console.WriteLine("You see a doorway to walk through");
                         break;
                     }
 
@@ -351,6 +371,11 @@ namespace adventuregame
                         Console.WriteLine("You see a dirty small pool of water");
                         break;
                     }
+                    if (IlookRoomFeature == 6 && lookRoomFeature.upViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
+                    {
+                        Console.WriteLine("You see a doorway to walk through");
+                        break;
+                    }
                 }
                 if (!lookRoomFeature.downViewRoomObject.Equals("") && direction.Equals("down"))
                 {
@@ -382,6 +407,11 @@ namespace adventuregame
                     if (IlookRoomFeature == 5 && lookRoomFeature.downViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
                     {
                         Console.WriteLine("You see a dirty small pool of water");
+                        break;
+                    }
+                    if (IlookRoomFeature == 6 && lookRoomFeature.downViewRoomObject.Equals(lookRoomFeature.roomFeatures[IlookRoomFeature]))
+                    {
+                        Console.WriteLine("You see a doorway to walk through");
                         break;
                     }
                 }
@@ -503,7 +533,8 @@ namespace adventuregame
         }
 
         // Function to delete an object from the inventory
-        public void deleteItem(){
+        public void deleteItem()
+        {
             player.inventory[globalInventoryNumber] = "n";
 
         }
@@ -534,47 +565,53 @@ namespace adventuregame
                     bool lockedDoorInRoom = false;
                     if (lookRoomFeature.leftViewRoomObject.Equals("lockeddoor"))
                     {
-                        // Need to consume key and create doorway
+
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        lookRoomFeature.leftViewRoomObject = lookRoomFeature.roomFeatures[6];
                         deleteItem();
                     }
                     if (lookRoomFeature.rightViewRoomObject.Equals("lockeddoor"))
                     {
-                        // Need to consume key and create doorway
+
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        lookRoomFeature.rightViewRoomObject = lookRoomFeature.roomFeatures[6];
                         deleteItem();
                     }
                     if (lookRoomFeature.forwardViewRoomObject.Equals("lockeddoor"))
                     {
-                        // Need to consume key and create doorway
+
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        lookRoomFeature.forwardViewRoomObject = lookRoomFeature.roomFeatures[6];
                         deleteItem();
                     }
                     if (lookRoomFeature.backViewRoomObject.Equals("lockeddoor"))
                     {
-                        // Need to consume key and create doorway
+
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        lookRoomFeature.backViewRoomObject = lookRoomFeature.roomFeatures[6];
                         deleteItem();
                     }
                     if (lookRoomFeature.upViewRoomObject.Equals("lockeddoor"))
                     {
-                        // Need to consume key and create doorway
+
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        lookRoomFeature.upViewRoomObject = lookRoomFeature.roomFeatures[6];
                         deleteItem();
                     }
                     if (lookRoomFeature.downViewRoomObject.Equals("lockeddoor"))
                     {
-                        // Need to consume key and create doorway
+
                         Console.WriteLine("Opening locked door.");
                         lockedDoorInRoom = true;
+                        lookRoomFeature.downViewRoomObject = lookRoomFeature.roomFeatures[6];
                         deleteItem();
                     }
-                    if(!lockedDoorInRoom)
+                    if (!lockedDoorInRoom)
                     {
                         Console.WriteLine("There is no locked door in the room. Write 'exit' to cancel or write press enter to use another item.");
                         exitInput = Console.ReadLine();
@@ -588,9 +625,7 @@ namespace adventuregame
                         }
                     }
                 }
-                if (useItemObject.Equals("knife")){
-                    bool vinesInRoom = false;
-                }
+                
             }
             else
             {

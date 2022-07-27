@@ -55,19 +55,21 @@ namespace adventuregame
             playerInput = Console.ReadLine();
             player.playerInputResult = player.getPlayerInput(playerInput);
             if (player.playerInputResult.Equals("look"))
-                {
-                    // Look using current room 
-                    player.look(currentRoom);
-                }
-                // If player wants to view inventory
-                if (player.playerInputResult.Equals("inv")){
-                    player.displayInventory();
-                }
-                // If player wants to use item
-                if (player.playerInputResult.Equals("use")){
-                    player.useItem(currentRoom);
+            {
+                // Look using current room 
+                player.look(currentRoom);
+            }
+            // If player wants to view inventory
+            if (player.playerInputResult.Equals("inv"))
+            {
+                player.displayInventory();
+            }
+            // If player wants to use item
+            if (player.playerInputResult.Equals("use"))
+            {
+                player.useItem(currentRoom);
 
-                }
+            }
 
 
 
@@ -84,11 +86,13 @@ namespace adventuregame
                     player.look(currentRoom);
                 }
                 // If player wants to view inventory
-                if (player.playerInputResult.Equals("inv")){
+                if (player.playerInputResult.Equals("inv"))
+                {
                     player.displayInventory();
                 }
                 // If player wants to use item
-                if (player.playerInputResult.Equals("use")){
+                if (player.playerInputResult.Equals("use"))
+                {
                     player.useItem(currentRoom);
 
                 }
