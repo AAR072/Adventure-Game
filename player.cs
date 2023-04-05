@@ -117,61 +117,11 @@ namespace adventuregame
         // Function to display inventory
         public static void displayInventory()
         {
-            if (!player.inventory[0].Equals("n"))
+            for (int i = 0; i < player.inventory.Length; i++)
             {
-                Console.WriteLine($"Slot 1: {player.inventory[0]}");
-            }
-            else
-            {
-                Console.WriteLine($"Slot 1: Empty");
-            }
-            if (!player.inventory[1].Equals("n"))
-            {
-                Console.WriteLine($"Slot 2: {player.inventory[1]}");
-            }
-            else
-            {
-                Console.WriteLine($"Slot 2: Empty");
-            }
-            if (!player.inventory[2].Equals("n"))
-            {
-                Console.WriteLine($"Slot 3: {player.inventory[2]}");
-            }
-            else
-            {
-                Console.WriteLine($"Slot 3: Empty");
-            }
-            if (!player.inventory[3].Equals("n"))
-            {
-                Console.WriteLine($"Slot 4: {player.inventory[3]}");
-            }
-            else
-            {
-                Console.WriteLine($"Slot 4: Empty");
-            }
-            if (!player.inventory[4].Equals("n"))
-            {
-                Console.WriteLine($"Slot 5: {player.inventory[4]}");
-            }
-            else
-            {
-                Console.WriteLine($"Slot 5: Empty");
-            }
-            if (!player.inventory[5].Equals("n"))
-            {
-                Console.WriteLine($"Slot 6: {player.inventory[5]}");
-            }
-            else
-            {
-                Console.WriteLine($"Slot 6: Empty");
-            }
-            if (!player.inventory[6].Equals("n"))
-            {
-                Console.WriteLine($"Slot 7: {player.inventory[6]}");
-            }
-            else
-            {
-                Console.WriteLine($"Slot 7: Empty");
+                string itemName = player.inventory[i];
+                string slotStatus = itemName != "n" ? itemName : "Empty";
+                Console.WriteLine($"Slot {i + 1}: {slotStatus}");
             }
         }
 
